@@ -1,9 +1,12 @@
-# You start with 9 lightbulbs where some are on and some are off;
-# when you press one lightbulb multiple lightbulbs will be turned off or on.
-# This code goes through pressing lightbulbs in a random order
-# and it determines whether after about 15 presses you have turned on all lightbulbs.
-# Code returns whether a solution has been found and the order you need to press the lightbulbs in.
-# Idea came from a level on the app: 100 doors challenge
+'''
+This code was created to solve a problem in alevel from a game app: 100 doors challenge
+
+You start with 9 lightbulbs where some are on and some are off; when you press one lightbulb, multiple lightbulbs will be turned off or on.
+This code goes through pressing lightbulbs in a random order and it determines whether after about 15 presses you have turned on all lightbulbs.
+Code returns whether a solution has been found and the order you need to press the lightbulbs in.
+'''
+
+
 
 import random
 
@@ -11,17 +14,18 @@ import random
 light_bulbs = ["x", "x", "-", "-", "-", "-", "x", "-", "x"]
 
 # Shows which lightbulbs are switched when one is pressed
-# eg if you press lightbulb 4 you will switch lightbulbs 1, 4, and 7
-one = [1, 6, 8]
-two = [2, 6, 7, 9]
-three = [3, 5, 9]
-four = [4, 1, 7]
-five = [5, 1, 2, 3]
-six = [6, 4, 9]
-seven = [7, 1, 3]
-eight = [8, 4, 5]
-nine = [9, 2, 8]
+# eg if you press lightbulb_4 you will switch lightbulbs 1, 4, and 7
+lightbulb_1 = [1, 6, 8]
+lightbulb_2 = [2, 6, 7, 9]
+lightbulb_3 = [3, 5, 9]
+lightbulb_4 = [4, 1, 7]
+lightbulb_5 = [5, 1, 2, 3]
+lightbulb_6 = [6, 4, 9]
+lightbulb_7 = [7, 1, 3]
+lightbulb_8 = [8, 4, 5]
+lightbulb_9 = [9, 2, 8]
 
+lightbulb_list = [lightbulb_1, lightbulb_2, lightbulb_3, lightbulb_4, lightbulb_5, lightbulb_6, lightbulb_7, lightbulb_8, lightbulb_9]
 
 # function to turn the lightbulbs on or off
 def switch(list_, val):
@@ -34,7 +38,7 @@ def switch(list_, val):
 
 # Function which checks whether only one more lightbulb press is needed to solve the game
 def check(list_):
-    for var in [one, two, three, four, five, six, seven, eight, nine]:
+    for var in lightbulb_list:
         lights_off = []
         lights_on = []
         for val1 in range(1, 10):
@@ -57,7 +61,7 @@ solved = False
 # 15 is chosen to keep the number of potential trials short, can be changed if you are
 # happy to follow a longer sequence of presses
 while i < 15 and not solved:
-    choice = random.choice([one, two, three, four, five, six, seven, eight, nine])
+    choice = random.choice(lightbulb_list)
     trials.append(choice[0])
     for val in choice:
         light_bulbs = switch(light_bulbs, val)
