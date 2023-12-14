@@ -57,7 +57,7 @@ while not cat_found:
     cat = boxes.index("cat") + 1
     if not value in range(length+1):
         # allows repeat guess (without cat moving) if guess is out of the range of the number of boxes
-        print(f"Please guess a box between 1 and {length}."
+        print(f"Please guess a box between 1 and {length}.")
     elif value == cat:
         # ends game once cat is found
         print("You've found the cat!")
